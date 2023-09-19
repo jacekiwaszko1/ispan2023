@@ -1,23 +1,73 @@
 <html>
 <head>
-<title>An example</title>
+<title>Poprawki, dopiski, skreślenia
+</title>
 <script src="https://plugin.humdrum.org/scripts/humdrum-notation-plugin-worker.js"></script>
+<style media="screen">
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.comparison {
+		flex: 0.46;
+	}
+</style>
 </head>
 <body>
-<p>J.N. Hummel prelude in D&flat;, op. 67, no. 15., measures 1-3 transposed to C major:</p>
-
-<script>
-   displayHumdrum({
-      uri: "github://jacekiwaszko1/ispan2023/bassus-comparison.krn",
-      source: "hummel-extract",
-      spacingStaff: 14,
-      spacingSystem: 0,
-      scale: 35,
-      filter: ""
-   });
+<h1>Poprawki, dopiski, skreślenia<br>odwzorowanie wielowarstwowego zapisu na przykładzie wawelskiego rękopisu muzycznego Kk.I.2</h1>
+<div id="missa2" class="tab">
+	<h2>Anonim - Missa II brevis: Agnus Dei</h2>
+</div>
+<div id="2versions" class="sub-tab">
+	<h3>Porownanie dwóch wariantów</h3>
+	<div id="missa2-sidebyside" class="container">
+		<div id="16w-div" class="comparison">
+			<script>
+			displayHumdrum({
+				url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+				source: "w16",
+				spacingStaff: 14,
+				spacingSystem: 0,
+				scale: 35,
+				filter: "filter -v v2 | myank -m 20-30"
+			});
+		</script>
+		
+		<script type="text/x-humdrum" id="w16"></script>
+		</div>
+		<div id="17w-div" class="comparison">
+			<script>
+			displayHumdrum({
+				url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+				source: "w17",
+				spacingStaff: 14,
+				spacingSystem: 0,
+				scale: 35,
+				filter: "filter -v v1 | myank -m 20-30"
+			});
+		</script>
+		<script type="text/x-humdrum" id="w17"></script>
+	</div>
+	</div>
+</div>
+<!--div id="basso-comparison-div" class="sub-tab">
+	<h3>BASSUS: porównanie wariantów </h3>
+	<script>
+	displayHumdrum({
+		url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/bassus-comparison.krn",
+		source: "basso-comparison",
+		spacingStaff: 14,
+		spacingSystem: 0,
+		scale: 35,
+		filter: ""
+	});
+	
 </script>
-
-<script type="text/x-humdrum" id="hummel-extract"></script>
+<script type="text/x-humdrum" id="basso-comparison"></script>
+	
+</div-->
 
 </body>
 </html>
