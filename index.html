@@ -3,7 +3,63 @@
 <title>Poprawki, dopiski, skreślenia
 </title>
 <script src="https://plugin.humdrum.org/scripts/humdrum-notation-plugin-worker.js"></script>
+<script type="text/javascript">
+	function activateTab(tabname, navtab, from) {
+		console.log(tabname);
+		tab = document.getElementById(tabname);
+		if (tab.classList.contains('hidden')) {
+			tab.classList.remove('hidden');
+			if (tabname == 'missa2-full') {
+				displayHumdrum({
+					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+					source: "missa2-score",
+					spacingStaff: 14,
+					spacingSystem: 0,
+					scale: 35,
+					filter: "",
+				});
+			} else if (tabname == 'twoversions') {
+				displayHumdrum({
+					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+					source: "w16",
+					spacingStaff: 14,
+					spacingSystem: 0,
+					scale: 35,
+					filter: "filter -v v1 | myank -m 21-28"
+				});
+				displayHumdrum({
+					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+					source: "w17",
+					spacingStaff: 14,
+					spacingSystem: 0,
+					scale: 35,
+					filter: "filter -v v2 | myank -m 21-28"
+				});
+			} else if (tabname == 'basso-comparison-div') {
+				displayHumdrum({
+					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+					source: "basso-comparison",
+					spacingStaff: 14,
+					spacingSystem: 0,
+					scale: 35,
+					filter: "filter -v b"
+				});
+			}
+		} else {
+			tab.classList.add('hidden');
+		}
+	}
+</script>
 <style media="screen">
+	body {
+		max-width: 1500px;
+		margin:auto;
+		font-family: Verdana;
+	}
+	.hidden {
+		display: none !important;
+	}
+
 	.container {
 		display: flex;
 		flex-wrap: wrap;
@@ -12,62 +68,169 @@
 	}
 	.comparison {
 		flex: 0.46;
+		margin:auto;
 	}
+	
+	.sub-tab {
+		-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		padding: 15px;
+		margin: 15px;
+		background-color: #fefbf9;
+	}
+	
+	div#menu {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 18px;
+		text-transform: uppercase;
+		-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		background-color: #e0c9a6;
+		margin-top: 15px;
+}
+.menutab {
+  /*height: 60px;*/
+  background-color: #e0c9a6;
+  flex: 20%;
+  padding: 26px;
+}
+div.menutab:hover {
+  background-color: #b0a986;
+}
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  flex: 10%;
+}
+	#imagecontainer {
+  	display: grid;
+  	/*height: 100%;*/
+  	/*margin:auto;*/
+	}
+	.missa2img {
+  	display: block;
+  	margin: auto;
+  	max-width: 80%;
+		max-height: 90%;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+
+  	/*max-height: 100vh;*/
+	}
+
+	h1 {
+		text-align: center;
+		text-transform:uppercase;
+	}
+	h2 {
+		text-decoration: underline;
+		text-align: center;
+	}
+	
+
+	
 </style>
 </head>
 <body>
-<h1>Poprawki, dopiski, skreślenia<br>odwzorowanie wielowarstwowego zapisu na przykładzie wawelskiego rękopisu muzycznego Kk.I.2</h1>
+<h1>Poprawki, dopiski, skreślenia:<br>odwzorowanie wielowarstwowego zapisu na przykładzie wawelskiego rękopisu muzycznego Kk.I.2</h1>
+
 <div id="missa2" class="tab">
 	<h2>Anonim - Missa II brevis: Agnus Dei</h2>
-</div>
-<div id="2versions" class="sub-tab">
+	<div id="menu" class="menu">
+		<div class="navbar">
+			<div onclick="activateTab('imagecontainer', 'nav-img')" id="nav-img" class="menutab">Skan</div>
+			<div onclick="activateTab('missa2-full', 'nav-full')" id="nav-full" class="menutab">Pełny zapis</div>
+			<div onclick="activateTab('twoversions', 'nav-sidebyside')" id="nav-sidebyside" class="menutab">Porównanie</div>
+			<div onclick="activateTab('basso-comparison-div', 'nav-bassus')" id="nav-bassus" class="menutab">Bassus</div>
+		</div>
+	</div>
+
+	<div id="imagecontainer" class="sub-tab hidden">
+		<h3>PL-Kk Kk.I.2, Bassus, f. 13v</h3>
+		<img class="missa2img" src="https://repozytorium.nifc.pl/iiif/2/pl-kk%3A1068~JP2~tr/850,1500,6700,3750/2500,/0/default.jpg" alt="">
+	</div>
+	<div id="missa2-full" class="sub-tab hidden">
+		<h3>Pełna partytura (dwa warianty najniższego głosu)</h3>
+		<div id="missa2-bothversions">
+			<!--script>
+			displayHumdrum({
+				url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
+				source: "missa2-score",
+				spacingStaff: 14,
+				spacingSystem: 0,
+				scale: 35,
+				filter: "",
+			});
+		</script-->
+			<script type="text/x-humdrum" id="missa2-score"></script>
+		</div>
+	</div>
+<div id="twoversions" class="sub-tab hidden">
 	<h3>Porownanie dwóch wariantów</h3>
 	<div id="missa2-sidebyside" class="container">
 		<div id="16w-div" class="comparison">
-			<script>
+			<!--script>
 			displayHumdrum({
 				url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
 				source: "w16",
 				spacingStaff: 14,
 				spacingSystem: 0,
 				scale: 35,
-				filter: "filter -v v2 | myank -m 20-30"
+				filter: "filter -v v1 "
 			});
-		</script>
-		
+		</script-->
 		<script type="text/x-humdrum" id="w16"></script>
+		
 		</div>
 		<div id="17w-div" class="comparison">
-			<script>
+			<!--script>
 			displayHumdrum({
 				url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
 				source: "w17",
 				spacingStaff: 14,
 				spacingSystem: 0,
 				scale: 35,
-				filter: "filter -v v1 | myank -m 20-30"
+				filter: "filter -v v2 "
 			});
-		</script>
+		</script-->
 		<script type="text/x-humdrum" id="w17"></script>
 	</div>
 	</div>
 </div>
-<!--div id="basso-comparison-div" class="sub-tab">
+<div id="basso-comparison-div" class="sub-tab hidden">
 	<h3>BASSUS: porównanie wariantów </h3>
-	<script>
+	<!--script>
 	displayHumdrum({
-		url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/bassus-comparison.krn",
+		url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
 		source: "basso-comparison",
 		spacingStaff: 14,
 		spacingSystem: 0,
 		scale: 35,
-		filter: ""
+		filter: "filter -v b"
 	});
 	
-</script>
+</script-->
 <script type="text/x-humdrum" id="basso-comparison"></script>
 	
-</div-->
+</div>
+</div>
+</div>
+
 
 </body>
 </html>
