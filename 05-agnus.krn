@@ -252,3 +252,4 @@
 !!!filter-b: kernview -v 1,2
 !!!xfilter: filter -v v2
 !!!RDF**kern: i = editorial accidental
+!!!verovio: condense none
