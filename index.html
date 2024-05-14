@@ -36,7 +36,7 @@
 					spacingStaff: 14,
 					spacingSystem: 12,
 					scale: 35,
-					filter: "filter -v v1 | myank -m 21-28"
+					filter: "kernview -v 1,3-6 | myank -m 21-28"
 				});
 				displayHumdrum({
 					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
@@ -44,7 +44,7 @@
 					spacingStaff: 14,
 					spacingSystem: 12,
 					scale: 35,
-					filter: "filter -v v2 | myank -m 21-28"
+					filter: "kernview -v 2-6 | myank -m 21-28"
 				});
 			} else if (tabname == 'twoversions-full') {
 				displayHumdrum({
@@ -53,7 +53,7 @@
 					spacingStaff: 14,
 					spacingSystem: 12,
 					scale: 35,
-					filter: "filter -v v1 "
+					filter: "kernview -v 1,3-6 "
 				});
 				displayHumdrum({
 					url: "https://raw.githubusercontent.com/jacekiwaszko1/ispan2023/master/05-agnus.krn",
@@ -61,7 +61,7 @@
 					spacingStaff: 14,
 					spacingSystem: 12,
 					scale: 35,
-					filter: "filter -v v2 "
+					filter: "kernview -v 2-6 "
 				});
 			} else if (tabname == 'basso-comparison-div') {
 				displayHumdrum({
@@ -70,7 +70,7 @@
 					spacingStaff: 14,
 					spacingSystem: 12,
 					scale: 35,
-					filter: "filter -v b"
+					filter: "kernview -v 1,2"
 				});
 			}
 		} else {
